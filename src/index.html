@@ -1,0 +1,140 @@
+<!--
+    vsftpd-gui — Visual FTP Server Manager
+    Copyright (C) 2024
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published
+    by the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; script-src 'self'">
+  <title>vsftpd GUI</title>
+  <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="app">
+    <nav id="sidebar">
+      <div class="sidebar-nav" id="sidebar-nav">
+        <button class="nav-item active" data-tab="config">
+          <i class="fas fa-wrench"></i>
+          <span class="nav-label" data-i18n="tab.config">Configuración</span>
+        </button>
+        <button class="nav-item" data-tab="service">
+          <i class="fas fa-server"></i>
+          <span class="nav-label" data-i18n="tab.service">Servicio</span>
+        </button>
+        <button class="nav-item" data-tab="users">
+          <i class="fas fa-users"></i>
+          <span class="nav-label" data-i18n="tab.users">Usuarios</span>
+        </button>
+        <button class="nav-item" data-tab="logs">
+          <i class="fas fa-list"></i>
+          <span class="nav-label" data-i18n="tab.logs">Registros</span>
+        </button>
+        <button class="nav-item" data-tab="files">
+          <i class="fas fa-folder-tree"></i>
+          <span class="nav-label" data-i18n="tab.files">Directorios</span>
+        </button>
+      </div>
+      <div class="sidebar-footer">
+        <button class="nav-item" id="btn-settings">
+          <i class="fas fa-sliders-h"></i>
+          <span class="nav-label" data-i18n="settings.title">Ajustes</span>
+        </button>
+      </div>
+    </nav>
+
+    <main id="main-content">
+      <section id="tab-content">
+        <div class="tab-pane active" id="pane-config">
+          <div id="config-editor"></div>
+        </div>
+        <div class="tab-pane" id="pane-service">
+          <div id="service-control"></div>
+        </div>
+        <div class="tab-pane" id="pane-users">
+          <div id="user-manager"></div>
+        </div>
+        <div class="tab-pane" id="pane-logs">
+          <div id="log-viewer"></div>
+        </div>
+        <div class="tab-pane" id="pane-files">
+          <div id="file-manager"></div>
+        </div>
+      </section>
+
+      <footer id="status-bar">
+        <div class="status-left">
+          <i class="fas fa-circle" id="status-icon"></i>
+          <span id="status-text">vsftpd: --</span>
+        </div>
+        <div class="status-center">
+          <span id="status-connections"></span>
+        </div>
+        <div class="status-right">
+          <i class="fas fa-file"></i>
+          <span id="status-config">/etc/vsftpd.conf</span>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <div class="modal-overlay hidden" id="modal-overlay">
+    <div class="modal" id="modal-settings">
+      <div class="modal-header">
+        <h2><i class="fas fa-sliders-h"></i> <span data-i18n="settings.title">Configuración</span></h2>
+        <button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body" id="settings-content"></div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="btn-settings-cancel" data-i18n="btn.cancel">Cancelar</button>
+        <button class="btn btn-primary" id="btn-settings-save" data-i18n="btn.save">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay hidden" id="modal-overlay-generic">
+    <div class="modal modal-sm" id="modal-generic">
+      <div class="modal-header">
+        <h2 id="modal-generic-title"></h2>
+        <button class="modal-close" id="modal-generic-close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body" id="modal-generic-body"></div>
+      <div class="modal-footer" id="modal-generic-footer"></div>
+    </div>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/config-schema.js"></script>
+  <script src="js/config-editor.js"></script>
+  <script src="js/service-control.js"></script>
+  <script src="js/user-manager.js"></script>
+  <script src="js/log-viewer.js"></script>
+  <script src="js/backup.js"></script>
+  <script src="js/files/file-icons.js"></script>
+  <script src="js/files/file-ops.js"></script>
+  <script src="js/files/file-listing.js"></script>
+  <script src="js/files/file-manager.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/status-bar.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
